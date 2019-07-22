@@ -103,6 +103,13 @@ export class AuthenticationService {
         })
     }
 
+    public vehicle():  Observable<any> {
+        return this.http.get('/vehicle', {
+            headers: { Authorization: `${this.getToken()}` }
+        })
+    }
+
+
     public logout (): void {
         this.token = ''
         window.localStorage.removeItem('userToken')

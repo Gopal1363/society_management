@@ -10,17 +10,18 @@ import { LoginComponent } from '../app/login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { HomeComponent } from './home/home.component'
 import {AuthenticationService} from '../authentication.service'
-import { AuthGuardService } from '../auth-guard.service'
+import { AuthGuardService } from '../auth-guard.service';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { AddVehicleComponent } from './vehicle/add-vehicle/add-vehicle.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuardService]
-  }
+  {path: 'profile',component: ProfileComponent,canActivate: [AuthGuardService]},
+  {path: 'vehicle',component: VehicleComponent, pathMatch: 'prefix', children:[
+    {path: 'addvehicle', component: AddVehicleComponent}
+  ]}
 
   
 ]
@@ -31,7 +32,9 @@ const routes: Routes = [
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    VehicleComponent,
+    AddVehicleComponent
   ],
   imports: [
     BrowserModule,

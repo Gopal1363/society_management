@@ -21,9 +21,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true })
 var Users = require("./routes/Users")
 app.use("/users", Users)
 
+var vehicle = require("./routes/Vehicles")
+app.use("/vehicle", vehicle)
+
 
 
 
 app.listen(port, function() {
-    console.log("Server is running on port" + port)
+    console.log("Server is running on Port: " + port)
 })
